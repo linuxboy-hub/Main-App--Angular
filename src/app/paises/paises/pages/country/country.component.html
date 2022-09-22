@@ -1,0 +1,36 @@
+<mat-grid-list cols="1" *ngIf="!country; else divCountry">
+  <mat-grid-tile>
+    <mat-spinner></mat-spinner>
+  </mat-grid-tile>
+</mat-grid-list>
+<ng-template #divCountry>
+  <div class="container">
+    <div fxLayout="row" fxLayoutGap="10px">
+      <div fxFlex="30">
+        <h2>{{ country.name | titlecase }}</h2>
+        <mat-divider></mat-divider>
+        <br />
+        <img [src]="country | countryImage" mat-card-image />
+      </div>
+      <div fxFlex="70">
+        <div fxLayout="row" fxLayoutAlign="start start">
+          <h2>Description</h2>
+          <div class="spacer"></div>
+          <button mat-button [routerLink]="'paises'">
+            <mat-icon>arrow_back_ios_new</mat-icon>
+            Back to list
+          </button>
+        </div>
+        <mat-divider></mat-divider>
+        <!-- <br /> -->
+        <mat-list>
+          <mat-list-item>Capital: {{ country.capital }}</mat-list-item>
+          <mat-list-item
+            >Population: {{ country.population | number }}</mat-list-item
+          >
+          <mat-list-item>Currency: {{ country.currency }}</mat-list-item>
+        </mat-list>
+      </div>
+    </div>
+  </div>
+</ng-template>

@@ -1,0 +1,111 @@
+<p-toolbar>
+  <div class="p-toolbar-group-left"></div>
+
+  <div class="p-toolbar-group-right">
+    <button
+      pButton
+      icon="pi pi-sort"
+      label="By name"
+      class="mr-1"
+      (click)="changeOrder('name')"
+    ></button>
+    <button
+      pButton
+      icon="pi pi-sort"
+      label="By capital"
+      class="mr-1 p-button-help"
+      (click)="changeOrder('capital')"
+    ></button>
+    <button
+      pButton
+      icon="pi pi-sort"
+      label="By population"
+      class="mr-1 p-button-success"
+      (click)="changeOrder('population')"
+    ></button>
+    <button
+      pButton
+      icon="pi pi-sort"
+      label="By VISA"
+      class="mr-1 p-button-warning"
+      (click)="changeOrder('visa')"
+    ></button>
+  </div>
+</p-toolbar>
+
+<div class="grid mt-2">
+  <div class="col">
+    <p-table [value]="countries | ordenar: orderBy" responsiveLayout="scroll">
+      <ng-template pTemplate="header">
+        <tr>
+          <th>Country</th>
+          <th>Capital</th>
+          <th>Population</th>
+          <th>Currency</th>
+          <th>Continent</th>
+          <th>Visa</th>
+          <th>Link</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-country>
+        <tr>
+          <td>{{ country.name | titlecase }}</td>
+          <td>{{ country.capital | titlecase }}</td>
+          <td>{{ country.population | number }}</td>
+          <td>{{ country.currency }}</td>
+          <td>{{ country.continent | titlecase }}</td>
+          <td>{{ country.visa | visa }}</td>
+          <td>
+            <a [href]="country.link" target="_blank">Visit Web</a>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>
+
+<p>Order with Prime NG table component</p>
+
+<div class="grid mt-2">
+  <div class="col">
+    <p-table [value]="countries | slice: 0" responsiveLayout="scroll">
+      <!-- Se usa el slice para mandarle una copia ya que estaba mutando el original -->
+      <ng-template pTemplate="header">
+        <tr>
+          <th pSortableColumn="name">
+            Country<p-sortIcon field="code"></p-sortIcon>
+          </th>
+          <th pSortableColumn="capital">
+            Capital<p-sortIcon field="code"></p-sortIcon>
+          </th>
+          <th pSortableColumn="population">
+            Population<p-sortIcon field="code"></p-sortIcon>
+          </th>
+          <th pSortableColumn="currency">
+            Currency<p-sortIcon field="code"></p-sortIcon>
+          </th>
+          <th pSortableColumn="continent">
+            Continent<p-sortIcon field="code"></p-sortIcon>
+          </th>
+          <th pSortableColumn="visa">
+            Visa<p-sortIcon field="code"></p-sortIcon>
+          </th>
+          <th>Link</th>
+        </tr>
+      </ng-template>
+      <ng-template pTemplate="body" let-country>
+        <tr>
+          <td>{{ country.name | titlecase }}</td>
+          <td>{{ country.capital | titlecase }}</td>
+          <td>{{ country.population | number }}</td>
+          <td>{{ country.currency }}</td>
+          <td>{{ country.continent | titlecase }}</td>
+          <td>{{ country.visa | visa }}</td>
+          <td>
+            <a [href]="country.link" target="_blank">Visit Web</a>
+          </td>
+        </tr>
+      </ng-template>
+    </p-table>
+  </div>
+</div>

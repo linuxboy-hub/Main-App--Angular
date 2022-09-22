@@ -1,0 +1,36 @@
+<div class="card__container">
+  <figure class="card__figure">
+    <img [src]="cardData.image" alt="" class="card__image" />
+  </figure>
+  <div class="card__body">
+    <div class="card__bodytext">
+      <h2>{{ cardData.artName | titlecase }}</h2>
+      <!-- <br /> -->
+      <div class="card__artist">
+        <span> Artist:</span>
+        <h4>&nbsp;{{ cardData.artist }}</h4>
+      </div>
+      <!-- <br /> -->
+      <div class="card__description">
+        <p style="margin-bottom: 10px">
+          <span>Description:</span>&nbsp;{{ cardData.description }}
+        </p>
+        <p><span>Date:</span>&nbsp;{{ cardData.date }}</p>
+      </div>
+      <br />
+    </div>
+    <div class="card__socialmedia">
+      Social media:
+      <i class="pi pi-instagram"></i>
+      <i class="pi pi-facebook"></i>
+      <i class="pi pi-twitter"></i>
+      <button
+        pButton
+        type="button"
+        class="p-button-warning p-button-sm"
+        label="More"
+        iconPos="right"
+      ></button>
+    </div>
+  </div>
+</div>

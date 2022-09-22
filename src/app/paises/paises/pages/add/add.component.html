@@ -1,0 +1,90 @@
+<div fxLayout="row">
+  <h2>{{ country.id ? "Edit country" : "Add country" }}</h2>
+  <div class="spacer"></div>
+  <button mat-button [routerLink]="'paises'">
+    <mat-icon>arrow_back_ios_new</mat-icon>
+    Back to list
+  </button>
+</div>
+<mat-divider></mat-divider>
+<br />
+<div fxLayout="row" fxLayout.lt-md="column" fxLayoutGap="40">
+  <div fxFlex="50" fxLayout="column">
+    <mat-form-field>
+      <mat-label>Name</mat-label>
+      <input type="text" matInput required [(ngModel)]="country.name" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Capital</mat-label>
+      <input type="text" matInput required [(ngModel)]="country.capital" />
+    </mat-form-field>
+    <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20">
+      <mat-form-field fxFlex="50">
+        <mat-label>Population</mat-label>
+        <input
+          type="number"
+          matInput
+          required
+          [(ngModel)]="country.population"
+        />
+      </mat-form-field>
+      <mat-form-field fxFlex="50">
+        <mat-label>Currency</mat-label>
+        <input type="text" matInput required [(ngModel)]="country.currency" />
+      </mat-form-field>
+    </div>
+    <!-- <mat-label>VISA</mat-label>
+     -->
+    <div fxLayout="row" fxLayoutGap="20" fxLayout.xs="column">
+      <div fxLayout="column" fxFlex="50">
+        <label>VISA: </label>
+        <mat-radio-group
+          fxLayout="row"
+          fxLayoutGap="15px"
+          [(ngModel)]="country.visa"
+        >
+          <mat-radio-button value="true">Needs VISA</mat-radio-button>
+          <mat-radio-button value="false">Do not need VISA</mat-radio-button>
+        </mat-radio-group>
+      </div>
+      <mat-form-field fxFlex="50">
+        <mat-label>Cotinent</mat-label>
+        <mat-select required [(ngModel)]="country.continent">
+          <mat-option
+            *ngFor="let continent of continents"
+            [value]="continent.name"
+            >{{ continent.name }}</mat-option
+          >
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <mat-form-field>
+      <mat-label>Image URL</mat-label>
+      <input matInput type="url" required [(ngModel)]="country.image" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Data Link</mat-label>
+      <input matInput type="url" required [(ngModel)]="country.link" />
+    </mat-form-field>
+    <br />
+    <div fxLayout="row" fxLayoutGap="10px" fxLayoutAlign="space-between">
+      <button mat-raised-button color="accent" (click)="saveCountry()">
+        <mat-icon>{{ country.id ? "update" : "save" }}save</mat-icon>
+        {{ country.id ? "UPDATE" : "SAVE" }}
+      </button>
+      <!-- <div class="spacer"></div> -->
+      <button
+        *ngIf="country.id"
+        mat-raised-button
+        color="accent"
+        (click)="deleteCountry()"
+      >
+        <mat-icon>delete</mat-icon>
+        DELETE
+      </button>
+    </div>
+  </div>
+  <div fxFlex="50">
+    <img [src]="country | countryImage" />
+  </div>
+</div>

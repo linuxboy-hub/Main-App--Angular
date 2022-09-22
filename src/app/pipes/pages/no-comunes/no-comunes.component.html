@@ -1,0 +1,95 @@
+<h1>Pipes NO Comunes</h1>
+<p>Pipes incluidos en Angular</p>
+<br />
+
+<div class="grid">
+  <div class="col-12 md:col-6">
+    <p-fieldset
+      legend="i18n Select pipe"
+      [toggleable]="true"
+      [transitionOptions]="'200ms'"
+    >
+      Saludos {{ nombre | titlecase }}, es un placer
+      {{ genero | i18nSelect: invitacionMap }} a nuestro evento <br /><br />
+      <button
+        pButton
+        (click)="changeInvited()"
+        label="Cambiar invitad@"
+        class="p-button-warning p-button-raised"
+      ></button>
+    </p-fieldset>
+  </div>
+  <div class="col-12 md:col-6">
+    <p-fieldset
+      legend="i18n Plural pipe"
+      [toggleable]="true"
+      [transitionOptions]="'200ms'"
+    >
+      Actualmente {{ clientes.length | i18nPlural: clientesMap }} <br /><br />
+      <button
+        pButton
+        (click)="addClient()"
+        label="Agregar Cliente"
+        class="p-button-outlined"
+        icon="pi pi-plus"
+      ></button>
+
+      <button
+        pButton
+        (click)="removeClient()"
+        label="Eliminar Cliente"
+        class="p-button-outlined p-button-danger"
+        icon="pi pi-minus"
+      ></button>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset
+      legend="Slice Pipe"
+      [toggleable]="true"
+      [transitionOptions]="'200ms'"
+    >
+      <strong>Original: </strong>
+      <pre>{{ clientes }}</pre>
+
+      <strong>Slice 0:2</strong>
+      <pre>{{ clientes | slice: 0:2 }}</pre>
+
+      <strong>Slice 1:</strong>
+      <pre>{{ clientes | slice: 1 }}</pre>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset
+      legend="KeyValue Pipe"
+      [toggleable]="true"
+      [transitionOptions]="'200ms'"
+    >
+      <ul>
+        <li *ngFor="let value of person | keyvalue">
+          {{ value.key | titlecase }} : {{ value.value }}
+          <!-- {{ value | json }} -->
+        </li>
+      </ul>
+    </p-fieldset>
+  </div>
+
+  <div class="col-12 md:col-6">
+    <p-fieldset
+      legend="Async Pipe"
+      [toggleable]="true"
+      [transitionOptions]="'200ms'"
+    >
+      Async se subscribe al obsevable <br />
+      Se emiten valores numericos: {{ myObservable | async }}
+      <br />
+      <p>Pipe Async en promesas:</p>
+      <p *ngIf="!(myPromise | async); else resultado">Resolviendo promesa...</p>
+      <ng-template #resultado>
+        <p>Resultado de la promesa: {{ myPromise | async }}</p></ng-template
+      >
+    </p-fieldset>
+  </div>
+</div>

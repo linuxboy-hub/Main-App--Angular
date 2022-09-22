@@ -1,0 +1,20 @@
+.pipes {
+  &__container {
+    // display: flex;
+    // text-align: center;
+    color: white;
+    padding: 20px;
+  }
+}
+.p-button-text {
+  position: absolute;
+  right: 0px;
+}
+.button {
+  padding: 10px;
+  margin-right: 10px;
+  cursor: pointer;
+  &:hover {
+    background-color: red;
+  }
+}

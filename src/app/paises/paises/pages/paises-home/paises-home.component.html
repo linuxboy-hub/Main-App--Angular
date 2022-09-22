@@ -1,0 +1,43 @@
+<!-- <h1>PaisesApp Home</h1>
+<router-outlet></router-outlet> -->
+<mat-sidenav-container fullscreen>
+  <mat-sidenav #sidenav mode="over">
+    <mat-toolbar color="primary">
+      <button mat-icon-button (click)="sidenav.toggle()" *ngIf="sidenav">
+        <mat-icon>menu</mat-icon>
+      </button>
+      <span>Countries App</span>
+    </mat-toolbar>
+
+    <mat-nav-list>
+      <a routerLink="./list" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>list</mat-icon>
+        <span>Countries list</span>
+      </a>
+      <a routerLink="./add" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>add</mat-icon>
+        <span>Add country</span>
+      </a>
+      <a routerLink="./search" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>search</mat-icon>
+        <span>Search country</span>
+      </a>
+      <a routerLink="" mat-list-item (click)="sidenav.toggle()">
+        <mat-icon mat-list-icon>home</mat-icon>
+        <span>Back home</span>
+      </a>
+    </mat-nav-list>
+  </mat-sidenav>
+  <mat-toolbar>
+    <button mat-icon-button (click)="sidenav.toggle()" *ngIf="sidenav">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <span>Countries App</span>
+    <div class="spacer"></div>
+    <span>{{ auth.usuario }}</span>
+    <button mat-button (click)="logOut()">Logout</button>
+  </mat-toolbar>
+  <div class="container">
+    <router-outlet></router-outlet>
+  </div>
+</mat-sidenav-container>

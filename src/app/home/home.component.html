@@ -1,0 +1,25 @@
+<div class="container {{ isModal ? 'dark' : '' }}">
+  <div class="content">
+    <h1>Welcome to Main App</h1>
+    <br />
+    <p>
+      Here you can find some little projects made using the javascript's
+      framework Angular
+    </p>
+    <br />
+    <button [routerLink]="'store'">Store</button>
+    <button [routerLink]="'pipes/basicos'">Pipes</button>
+    <button>Music App</button>
+    <button [routerLink]="'paises'">Paises</button>
+    <button>PortFolio</button>
+
+    <button (click)="setCookie()">Set Cookie</button>
+    <button (click)="showCookie()">Show Cookie</button>
+    <button (click)="deleteCookie()">Delete cookie</button>
+    <br /><br />
+    <button (click)="openModal()">Show modal</button>
+    <div class="modal" *ngIf="isModal">
+      <app-modal (modalEvent)="closeModal()"></app-modal>
+    </div>
+  </div>
+</div>

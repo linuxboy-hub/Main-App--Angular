@@ -1,0 +1,12 @@
+<h1>Confirm delete</h1>
+<hr />
+<p>
+  Are you sure you want to delete {{ data.name | titlecase }} of the countries
+  list?
+</p>
+<hr />
+
+<div fxLayout="row" fxLayoutAlign="space-between">
+  <button mat-button (click)="cancel()">Cancel</button>
+  <button mat-raised-button color="warn" (click)="delete()">Delete</button>
+</div>

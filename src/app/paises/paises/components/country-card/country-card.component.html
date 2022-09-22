@@ -1,0 +1,28 @@
+<mat-card>
+  <mat-card-header>
+    <mat-card-title>{{ country.name | titlecase }}</mat-card-title>
+    <mat-card-subtitle>{{ country.capital | titlecase }}</mat-card-subtitle>
+  </mat-card-header>
+  <img [src]="country | countryImage" mat-card-image />
+  <mat-card-content>
+    Population: {{ country.population | number }} <br />
+    Currency:
+    {{ country.currency }}
+  </mat-card-content>
+  <mat-card-actions>
+    <div fxLayout="row" fxLayoutAlign="space-between center">
+      <button fxFlex="50" mat-button [routerLink]="['/paises/', country.id]">
+        <mat-icon>info</mat-icon>
+        SEE MORE
+      </button>
+      <button
+        fxFlex="50"
+        mat-button
+        [routerLink]="['/paises/edit', country.id]"
+      >
+        <mat-icon>edit</mat-icon>
+        EDIT
+      </button>
+    </div>
+  </mat-card-actions>
+</mat-card>

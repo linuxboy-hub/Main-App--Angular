@@ -1,0 +1,17 @@
+<h1>Countries List</h1>
+<mat-divider></mat-divider>
+<br />
+
+<div fxLayout="row wrap" fxLayout.xs="column" fxLayoutAlign="center">
+  <!-- fxLayoutGap="20px" -->
+  <div
+    fxFlex="20"
+    fxFlex.lg="15"
+    fxFlex.md="23"
+    fxFlex.sm="30"
+    class="list__card"
+    *ngFor="let country of countriesData"
+  >
+    <app-country-card [country]="country"></app-country-card>
+  </div>
+</div>

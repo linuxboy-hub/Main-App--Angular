@@ -1,0 +1,60 @@
+<div fxLayout="column">
+  <br />
+  <div>
+    <h1>Countries search</h1>
+    <mat-divider></mat-divider>
+    <br />
+  </div>
+  <div fxLayout="column">
+    <mat-form-field appearance="fill">
+      <mat-label>Search country</mat-label>
+      <input
+        type="text"
+        placeholder=""
+        aria-label=""
+        matInput
+        [(ngModel)]="searchTerm"
+        [matAutocomplete]="auto"
+        (input)="searching($event)"
+      />
+      <mat-autocomplete
+        autoActiveFirstOption
+        #auto="matAutocomplete"
+        (optionSelected)="optionSelected($event)"
+      >
+        <mat-option *ngFor="let country of countries" [value]="country">
+          {{ country.name }}
+        </mat-option>
+
+        <mat-option
+          value=""
+          *ngIf="countries.length === 0 && searchTerm.trim().length > 0"
+        >
+          No results for {{ searchTerm }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+  </div>
+</div>
+
+<div *ngIf="country" fxLayout="row" fxLayoutGap="10px">
+  <div fxFlex="30">
+    <h2>{{ country.name | titlecase }}</h2>
+    <mat-divider></mat-divider>
+    <br />
+    <img [src]="country | countryImage" style="width: 100%" />
+  </div>
+  <div fxFlex="70">
+    <h2>Desciption</h2>
+    <mat-divider></mat-divider>
+    <mat-list>
+      <mat-list-item
+        ><p>Capital: {{ country.capital | titlecase }}</p></mat-list-item
+      >
+      <mat-list-item>
+        <p>Population: {{ country.population | number }}</p>
+      </mat-list-item>
+      <mat-list-item>Currency: {{ country.currency }}</mat-list-item>
+    </mat-list>
+  </div>
+</div>

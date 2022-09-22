@@ -1,0 +1,49 @@
+<h1>Pipes básicos</h1>
+<p>Pipes incluidos en Angular, usualmente en el common module</p>
+<br />
+
+<div class="grid">
+  <div class="col-4">
+    <p-card header="Uppercase" [subheader]="nombreLower">
+      Result: {{ nombreLower | uppercase }}
+    </p-card>
+  </div>
+  <div class="col-4">
+    <p-card header="Lowercase" [subheader]="nombreUpper">
+      Result: {{ nombreUpper | lowercase }}
+    </p-card>
+  </div>
+  <div class="col-4">
+    <p-card header="Titlecase" [subheader]="nombreMix">
+      Result: {{ nombreMix | titlecase }}
+    </p-card>
+  </div>
+</div>
+
+<p>Manejo de fechas</p>
+<br />
+
+<div class="grid">
+  <div class="col-6">
+    <p-card>
+      <ul>
+        <li>Fecha</li>
+        <li>Fecha | date</li>
+        <li>Fecha | date : 'short'</li>
+        <li>Fecha | date : 'fullDate'</li>
+        <li>Fecha | date : CUSTOM DATE</li>
+      </ul>
+    </p-card>
+  </div>
+  <div class="col-6">
+    <p-card>
+      <ul>
+        <li>{{ fecha }}</li>
+        <li>{{ fecha | date }}</li>
+        <li>{{ fecha | date: "short" }}</li>
+        <li>{{ fecha | date: "fullDate" }}</li>
+        <li>{{ fecha | date: "MMMM-d-yyy" }}</li>
+      </ul>
+    </p-card>
+  </div>
+</div>
