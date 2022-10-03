@@ -1,0 +1,86 @@
+<div class="container" fxLayout="column">
+  <h2>Reactives: Dynamics</h2>
+  <hr style="width: 100%" />
+  <div fxLayout="row">
+    <form
+      (ngSubmit)="saveData()"
+      fxFlex="50"
+      fxLayout="column"
+      fxLayoutGap="10px"
+      autocomplete="off"
+      [formGroup]="myForm"
+    >
+      <label for="name">Name</label>
+      <input
+        pInputText
+        type="text"
+        placeholder="Enter name"
+        formControlName="name"
+      />
+      <span class="red-text" *ngIf="isValidField('name')"
+        >Required field and minimun length of 3 characters</span
+      >
+
+      <br />
+
+      <!-- Este input será independiente del formulario grande como tal, por esto se crea un nuevo formControl -->
+      <label for="add_favorite">Add favorites</label>
+      <div class="p-inputgroup">
+        <input
+          type="text"
+          pInputText
+          placeholder="Enter favorite"
+          [formControl]="favorite"
+          (keyup.enter)="addFavorite()"
+        />
+        <button
+          type="button"
+          pButton
+          pRipple
+          icon="pi pi-plus"
+          styleClass="p-button-warn"
+          label="Add"
+          (click)="addFavorite()"
+        ></button>
+      </div>
+      <br />
+      <label>Favorites</label>
+      <div formArrayName="favorites">
+        <div
+          class="p-inputgroup"
+          *ngFor="let fav of favoritesArr.controls; let i = index"
+        >
+          <input pInputText type="text" [formControlName]="i" />
+          <button
+            type="button"
+            pButton
+            pRipple
+            icon="pi pi-trash"
+            styleClass="p-button-warn"
+            (click)="deleteFavorite(i)"
+          ></button>
+        </div>
+      </div>
+
+      <button
+        pButton
+        pRipple
+        type="submit"
+        label="Save"
+        class="p-button"
+      ></button>
+    </form>
+  </div>
+</div>
+<hr />
+<span>Form valid </span>
+<pre>{{ myForm.valid | json }}</pre>
+<br /><br />
+<span>Form value </span>
+<pre>{{ myForm.value | json }}</pre>
+<br /><br />
+<span>New fav Form valid </span>
+<pre>{{ favorite.valid | json }}</pre>
+<br /><br />
+<span>New fav Form value </span>
+<pre>{{ favorite.value | json }}</pre>

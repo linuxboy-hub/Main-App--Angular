@@ -10,6 +10,7 @@ import { HomeModule } from './home/home.module';
 import { StoreModule } from './store/store.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormulariosModule } from './formularios/formularios.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -19,7 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserAnimationsModule,
     HomeModule,
     StoreModule,
-    SharedModule,
+    FormulariosModule,
     HttpClientModule,
   ],
   providers: [],

@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { HomeFormulariosComponent } from './formularios/home-formularios.component';
 import { HomeComponent } from './home/home.component';
 import { AuthGuard } from './paises/auth/guards/auth.guard';
 import { BasicosComponent } from './pipes/pages/basicos/basicos.component';
@@ -31,6 +32,34 @@ const routes: Routes = [
       import('./paises/auth/auth.module').then((m) => m.AuthModule), //Esta es la clave del lazy load, ya que carga
     //los hijos solo cuando se entra a esta ruta
   },
+  {
+    path: 'formularios',
+    component: HomeFormulariosComponent,
+    children: [
+      {
+        path: 'template',
+        loadChildren: () =>
+          import('./formularios/template/template.module').then(
+            (m) => m.TemplateModule
+          ),
+      },
+      {
+        path: 'reactivos',
+        loadChildren: () =>
+          import('./formularios/reactive/reactive.module').then(
+            (m) => m.ReactiveModule
+          ),
+      },
+      {
+        path: 'validations',
+        loadChildren: () =>
+          import('./formularios/validations/validations.module').then(
+            (m) => m.ValidationsModule
+          ),
+      },
+    ],
+  },
+
   { path: '**', redirectTo: '404' },
   { path: '404', component: ErrorPageComponent },
 ];

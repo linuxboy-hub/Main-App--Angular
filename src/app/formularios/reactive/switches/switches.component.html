@@ -1,0 +1,61 @@
+<div class="container" fxLayout="column">
+  <h2>Template: Switches</h2>
+  <hr style="width: 100%" />
+  <div fxLayout="row">
+    <form
+      [formGroup]="myForm"
+      (ngSubmit)="saveData()"
+      autocomplete="off"
+      fxFlex="50"
+      fxLayout="column"
+      fxLayoutGap="10px"
+    >
+      <!-- Radio buttons -->
+      <h3>Gender</h3>
+      <div class="field-radiobutton">
+        <p-radioButton
+          value="M"
+          inputId="male"
+          formControlName="gender"
+        ></p-radioButton>
+        <label for="male">Male</label>
+      </div>
+      <div class="field-radiobutton">
+        <p-radioButton
+          value="F"
+          inputId="female"
+          formControlName="gender"
+        ></p-radioButton>
+        <label for="female">Female</label>
+      </div>
+      <h3>Notifications</h3>
+      <p-inputSwitch formControlName="notifications"></p-inputSwitch>
+
+      <h3>CheckBoxes</h3>
+      <div class="field-checkbox">
+        <p-checkbox
+          name="conditions"
+          [binary]="true"
+          inputId="binary"
+          label="Terms and conditions"
+          formControlName="conditions"
+        ></p-checkbox>
+        <!-- <label for="binary">{{ conditions }}</label> -->
+      </div>
+      <br />
+      <button pButton label="Save" type="submit"></button>
+    </form>
+  </div>
+</div>
+<hr style="width: 100%" />
+<h4>Form value</h4>
+<pre>{{ myForm.value | json }}</pre>
+
+<h4>Form state</h4>
+<pre>Valid: {{ myForm.valid }}</pre>
+
+<h4>Person</h4>
+<pre>{{ person | json }}</pre>
+
+<!-- <h4>Terms and conditions</h4>
+<pre>{{ dataForm.controls["conditions"].errors | json }}</pre> -->

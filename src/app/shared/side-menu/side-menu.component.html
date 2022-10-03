@@ -1,0 +1,26 @@
+<h2>Template</h2>
+<hr />
+<mat-nav-list>
+  <a *ngFor="let item of templateMenu" [routerLink]="item.route" mat-list-item>
+    <!-- <mat-icon mat-list-icon>fiber_manual_record</mat-icon> -->
+    <span>{{ item.text }}</span>
+  </a>
+</mat-nav-list>
+<br /><br />
+<h2>Reactive</h2>
+<hr />
+<mat-nav-list>
+  <a *ngFor="let item of reactiveMenu" [routerLink]="item.route" mat-list-item>
+    <!-- <mat-icon mat-list-icon>fiber_manual_record</mat-icon> -->
+    <span>{{ item.text }}</span>
+  </a>
+</mat-nav-list>
+<br /><br />
+<h2>Validations</h2>
+<hr />
+<mat-nav-list>
+  <a *ngFor="let item of authMenu" [routerLink]="item.route" mat-list-item>
+    <!-- <mat-icon mat-list-icon>fiber_manual_record</mat-icon> -->
+    <span>{{ item.text }}</span>
+  </a>
+</mat-nav-list>

@@ -21,16 +21,16 @@ export class PaisesHomeComponent implements OnInit {
 
   ngOnInit(): void {
     this.auth = JSON.parse(localStorage.getItem('user')!);
-    // var parser = new UAParser();
-    // if (parser.getOS().name === 'iOS') {
-    //   this.document.location.href =
-    //     'https://apps.apple.com/co/app/clickam/id1495823258';
-    // } else if (parser.getOS().name === 'Android') {
-    //   this.document.location.href =
-    //     'https://play.google.com/store/apps/details?id=com.clickam.appcompania';
-    // } else {
-    //   this.document.location.href = 'https://www.clickam.com.co/inicio';
-    // }
+    var parser = new UAParser();
+    if (parser.getOS().name === 'iOS') {
+      this.document.location.href =
+        'https://apps.apple.com/co/app/clickam/id1495823258';
+    } else if (parser.getOS().name === 'Android') {
+      this.document.location.href =
+        'https://play.google.com/store/apps/details?id=com.clickam.appcompania';
+    } else {
+      this.document.location.href = 'https://www.clickam.com.co/inicio';
+    }
   }
   logOut() {
     this.authService.logout();

@@ -1,0 +1,45 @@
+<div class="container" fxLayout="column">
+  <h2>Template: Basics</h2>
+  <hr style="width: 100%" />
+  <div fxLayout="row">
+    <form
+      fxFlex="50"
+      fxLayout="column"
+      fxLayoutGap="10px"
+      autocomplete="off"
+      (ngSubmit)="saveData(productForm)"
+      #productForm="ngForm"
+    >
+      <label for="username1" class="block">Product name</label>
+      <input pInputText ngModel name="name" required />
+
+      <div class="field">
+        <label for="productValue" class="block">Product value</label>
+        <p-inputNumber
+          ngModel
+          name="value"
+          mode="decimal"
+          [maxFractionDigits]="3"
+          [required]="true"
+        ></p-inputNumber>
+      </div>
+
+      <div class="field">
+        <label class="block">Available quantity (stock)</label>
+        <p-inputNumber ngModel name="quantity" [required]="true">
+        </p-inputNumber>
+      </div>
+      <button
+        pButton
+        type="submit"
+        icon="pi pi-save"
+        label="Save"
+        style="width: 100px"
+      ></button>
+    </form>
+  </div>
+</div>
+<hr style="width: 100%" />
+<div>
+  <pre>{{ productForm.value | json }}</pre>
+</div>

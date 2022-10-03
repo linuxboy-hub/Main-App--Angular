@@ -1,0 +1,102 @@
+<div class="container" fxLayout="column">
+  <h2>Template: Switches</h2>
+  <hr style="width: 100%" />
+  <div fxLayout="row">
+    <form
+      (ngSubmit)="saveData()"
+      #dataForm="ngForm"
+      autocomplete="off"
+      fxFlex="50"
+      fxLayout="column"
+      fxLayoutGap="10px"
+    >
+      <!-- Radio buttons -->
+      <h3>Gender</h3>
+      <div class="field-radiobutton">
+        <p-radioButton
+          name="gender"
+          value="M"
+          inputId="male"
+          [(ngModel)]="person.gender"
+          required
+        ></p-radioButton>
+        <label for="male">Male</label>
+      </div>
+      <div class="field-radiobutton">
+        <p-radioButton
+          name="gender"
+          value="F"
+          inputId="female"
+          [(ngModel)]="person.gender"
+          required
+        ></p-radioButton>
+        <label for="female">Female</label>
+      </div>
+      <h3>Notifications</h3>
+      <p-inputSwitch
+        [(ngModel)]="person.notifications"
+        name="notifications"
+      ></p-inputSwitch>
+
+      <h3>CheckBoxes</h3>
+      <div class="field-checkbox">
+        <p-checkbox
+          [(ngModel)]="conditions"
+          name="conditions"
+          [binary]="true"
+          [required]="true"
+          inputId="binary"
+          label="Terms and conditions"
+        ></p-checkbox>
+        <!-- <label for="binary">{{ conditions }}</label> -->
+      </div>
+      <!-- <div class="field-checkbox">
+        <p-checkbox
+          name="group1"
+          value="New York"
+          [(ngModel)]="selectedCities"
+          inputId="ny"
+        ></p-checkbox>
+        <label for="ny">New York</label>
+      </div>
+      <div class="field-checkbox">
+        <p-checkbox
+          name="group1"
+          value="San Francisco"
+          [(ngModel)]="selectedCities"
+          inputId="sf"
+        ></p-checkbox>
+        <label for="sf">San Francisco</label>
+      </div>
+      <div class="field-checkbox">
+        <p-checkbox
+          name="group1"
+          value="Los Angeles"
+          [(ngModel)]="selectedCities"
+          inputId="la"
+        ></p-checkbox>
+        <label for="la">Los Angeles</label>
+      </div>
+      <div class="field-checkbox">
+        <p-checkbox
+          name="group1"
+          value="Chicago"
+          [(ngModel)]="selectedCities"
+          inputId="ch"
+        ></p-checkbox>
+        <label for="ch">Chicago</label>
+      </div> -->
+      <br />
+      <button pButton label="Save" [disabled]="dataForm.invalid"></button>
+    </form>
+  </div>
+</div>
+<hr style="width: 100%" />
+<h4>Form value</h4>
+<pre>{{ dataForm.value | json }}</pre>
+
+<h4>Form state</h4>
+<pre>Valid: {{ dataForm.valid }}</pre>
+
+<h4>Terms and conditions</h4>
+<pre>{{ dataForm.controls["conditions"].errors | json }}</pre>

@@ -1,0 +1,57 @@
+<div class="container" fxLayout="column">
+  <h2>Reactives: Basics</h2>
+  <hr style="width: 100%" />
+  <div fxLayout="row">
+    <form
+      (ngSubmit)="saveData()"
+      autocomplete="off"
+      fxFlex="50"
+      fxLayout="column"
+      fxLayoutGap="10px"
+      [formGroup]="dataForm"
+    >
+      <label for="username1" class="block">Product name</label>
+      <input pInputText name="name" formControlName="name" />
+      <span class="red-text" *ngIf="isValidField('name')"
+        >Required Field and minimum of 3 characters</span
+      >
+
+      <div class="field">
+        <label for="productValue" class="block">Product value</label>
+
+        <p-inputNumber
+          name="price"
+          mode="decimal"
+          [maxFractionDigits]="3"
+          formControlName="price"
+          [style]="{ width: '100%' }"
+          class="w-100"
+        ></p-inputNumber>
+        <span class="red-text" *ngIf="isValidField('price')"
+          >Required Field and minimum value is 0</span
+        >
+      </div>
+
+      <div class="field">
+        <label class="block">Available quantity (stock)</label>
+        <p-inputNumber
+          name="stock"
+          formControlName="stock"
+          [style]="{ width: '100%' }"
+          class="w-100"
+        ></p-inputNumber>
+        <span class="red-text" *ngIf="isValidField('stock')"
+          >Required Field and minimum value is 0</span
+        >
+      </div>
+      <button pButton type="submit" icon="pi pi-save" label="Save"></button>
+      <!-- [disabled]="dataForm.invalid" -->
+    </form>
+  </div>
+</div>
+<hr style="width: 100%" />
+
+<h3>Form data from reference</h3>
+<div>
+  <pre>{{ dataForm.value | json }}</pre>
+</div>

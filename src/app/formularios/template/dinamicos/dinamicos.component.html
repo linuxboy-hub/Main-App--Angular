@@ -1,0 +1,89 @@
+<div class="container" fxLayout="column">
+  <h2>Template: Dynamics</h2>
+  <hr style="width: 100%" />
+  <div fxLayout="row">
+    <form
+      #dataForm="ngForm"
+      (ngSubmit)="saveData()"
+      fxFlex="50"
+      fxLayout="column"
+      fxLayoutGap="10px"
+      autocomplete="off"
+    >
+      <label for="name">Name</label>
+      <input
+        pInputText
+        type="text"
+        placeholder="Enter name"
+        [(ngModel)]="person.name"
+        name="name"
+        required
+      />
+      <span class="red-text" *ngIf="dataForm.controls['name'].errors"
+        >Campo requerido</span
+      >
+      <br />
+
+      <label for="add_favorite">Add favorites</label>
+      <div class="p-inputgroup">
+        <input
+          type="text"
+          name="add_favorite"
+          pInputText
+          placeholder="Enter favorite"
+          [(ngModel)]="newFavorite"
+          (keyup.enter)="addFavorite()"
+        />
+        <button
+          type="button"
+          pButton
+          pRipple
+          icon="pi pi-plus"
+          styleClass="p-button-warn"
+          label="Add"
+          (click)="addFavorite()"
+        ></button>
+      </div>
+      <br />
+      <label>Favorites</label>
+      <div
+        class="p-inputgroup"
+        *ngFor="let favorite of person.favorites; let i = index"
+      >
+        <input
+          pInputText
+          type="text"
+          [(ngModel)]="favorite.name"
+          name="favorite_{{ i }}"
+        />
+        <button
+          type="button"
+          pButton
+          pRipple
+          icon="pi pi-trash"
+          styleClass="p-button-warn"
+          (click)="deleteItem(i)"
+        ></button>
+      </div>
+      <!-- <div>
+      </div> -->
+
+      <button
+        pButton
+        pRipple
+        type="button"
+        label="Save"
+        class="p-button"
+        [disabled]="dataForm.invalid"
+        (click)="saveData()"
+      ></button>
+    </form>
+  </div>
+</div>
+<hr />
+<span>
+  Person data
+  <pre>
+    {{ person | json }}
+  </pre>
+</span>
